@@ -8,7 +8,7 @@ import logging
  
 logging.basicConfig(level=logging.DEBUG)
  
-pipeline = joblib.load('./Model/pipeline2.joblib')
+pipeline = joblib.load('./Model/pipeline.joblib')
 encoder = joblib.load('./Model/encoder.joblib')
  
 app = FastAPI(
@@ -26,14 +26,13 @@ class SmartFeatures(BaseModel):
     BD2: float
     Age: int
     Insurance: int
-    Sepssis: object
    
 @app.get('/')
 def read_root():
     explanation = {
-        'message': "Welcome to the Sepsis Prediction App",
-        'description': "This API allows you to predict sepsis based on patient data.",
-        'usage': "Submit a POST request to /predict with patient data to make predictions."
+        'message': "Welcome to the Sepsis Analysis API",
+        'description': "This API allows you to predict Sepssis based on patient data.",
+        'usage': "Submit a POST request to predict patient data to make predictions."
     }
     return explanation
  
@@ -49,8 +48,8 @@ def predict_sepsis_infection(sepsis_features: SmartFeatures):
             predict_encoder = encoder.inverse_transform([predict])[0]
            
            
-        return {'prediction': predict_encoder}
+        return {'Prediction': predict_encoder}
  
     except Exception as e:
         logging.error(f"An error occurred: {str(e)}")
-        raise HTTPException(status_code=500, detail="The Serve is Down")
+        raise HTTPException(status_code=500, detail="The Server is down! Please contact the administrator. Thank you.")
