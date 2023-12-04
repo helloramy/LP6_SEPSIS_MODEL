@@ -8,11 +8,11 @@ import logging
  
 logging.basicConfig(level=logging.DEBUG)
  
-pipeline = joblib.load('./Model/pipeline.joblib')
+pipeline = joblib.load('./Model/pipeline3.joblib')
 encoder = joblib.load('./Model/encoder.joblib')
  
 app = FastAPI(
-    title= "Sepsis Analysis API"
+    title= "Sepssis Analysis API"
 )
  
 # Input Features
@@ -30,13 +30,13 @@ class SmartFeatures(BaseModel):
 @app.get('/')
 def read_root():
     explanation = {
-        'message': "Welcome to the Sepsis Analysis API",
+        'message': "Welcome to the Sepssis Analysis API",
         'description': "This API allows you to predict Sepssis based on patient data.",
         'usage': "Submit a POST request to predict patient data to make predictions."
     }
     return explanation
  
-@app.post('/predict_Sepsiss')
+@app.post('/predict_Sepssis')
 def predict_sepsis_infection(sepsis_features: SmartFeatures):
     try:
         df = pd.DataFrame([sepsis_features.model_dump()])
