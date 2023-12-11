@@ -31,6 +31,7 @@ Create a new virtual environment (venv) and activate the virtual environment, up
         python3 -m venv venv; source venv/bin/activate; python -m pip install -q --upgrade pip; python -m pip install -qr requirements.txt
 
 ## LinkedIn Article
+https://www.linkedin.com/pulse/building-machine-learning-api-fastapi-sepsis-akornor-nyyzc
 
 ## Screenshots of App
 ![Alt text](<Screenshot (31).png>)
